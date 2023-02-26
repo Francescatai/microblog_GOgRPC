@@ -9,13 +9,14 @@ viper setting
 package microblog
 
 import (
-	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+
+	"microblog/internal/pkg/log"
 )
 
 const (
@@ -62,9 +63,20 @@ func initConfig() {
 
 	// 如果指定了配置文件名，則使用指定的配置文件，否则在註冊的查找路徑中搜尋
 	if err := viper.ReadInConfig(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
+		log.Errorw("Failed to read viper configuration file", "err", err)
 	}
 
-	// 印 viper 當前使用的配置文件，方便 Debug
-	fmt.Fprintln(os.Stdout, "Using config file:", viper.ConfigFileUsed())
+	// viper 當前使用的配置文件
+	log.Infow("Using config file", "file", viper.ConfigFileUsed())
+}
+
+// 從 viper 中讀取log配置，創建 `*log.Options` 並返回
+func logOptions() *log.Options {
+	return &log.Options{
+		DisableCaller:     viper.GetBool("log.disable-caller"),
+		DisableStacktrace: viper.GetBool("log.disable-stacktrace"),
+		Level:             viper.GetString("log.level"),
+		Format:            viper.GetString("log.format"),
+		OutputPaths:       viper.GetStringSlice("log.output-paths"),
+	}
 }
