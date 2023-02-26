@@ -5,8 +5,19 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+    "microblog/internal/microblog"
+
+)
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println("hello World")
+
+	command := microblog.NewMicroBlogCommand()
+    if err := command.Execute(); err != nil {
+        os.Exit(1)
+    }
 }

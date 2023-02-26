@@ -6,9 +6,9 @@ tmp_dir = "_output/microblog"
 
 
 [build]
-  args_bin = []
+  args_bin = ["-c", "configs/microblog.yaml"]
   bin = "_output/microblog/microblog.exe"
-  cmd = "go build -o  ./_output/microblog/microblog.exe ./cmd/blog/main.go "
+  cmd = "go build -o  ./_output/microblog/microblog.exe ./cmd/microblog/main.go "
   delay = 0
   exclude_dir = []
   exclude_file = []
@@ -22,7 +22,7 @@ tmp_dir = "_output/microblog"
   kill_delay = "0s"
   log = "build-errors.log"
   rerun = false
-  rerun_delay = 1000
+  rerun_delay = 1500
   send_interrupt = false
   stop_on_error = false
 
