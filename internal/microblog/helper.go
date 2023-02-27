@@ -1,11 +1,8 @@
-// Copyright 2023 Innkeeper Francesca <https://github.com/Francescatai>. All rights reserved.
+// Copyright 2023 Francesca <https://github.com/Francescatai>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file. The original repo for
 // this file is https://github.com/Francescatai/microblog_GOgRPC.
 
-/*
-viper setting
-*/
 package microblog
 
 import (
@@ -24,7 +21,7 @@ const (
 	recommendedHomeDir = ".microblog"
 
 	// defaultConfigName 指定 microblog 服務默認配置文件名
-	defaultConfigName = "microblog.yaml"
+	defaultConfigName = "./configs/microblog.yaml"
 )
 
 // initConfig 設置需要讀取的默認配置文件、環境變量，病毒取配置文件内容到 viper 中
@@ -57,7 +54,7 @@ func initConfig() {
 	// 讀取環境變量的前綴為 microblog，如果是 microblog，自動轉大寫
 	viper.SetEnvPrefix("MICROBLOG")
 
-	//\將 viper.Get(key) key 字符串中 '.' 和 '-' 替換為 '_'
+	// 將 viper.Get(key) key 字符串中 '.' 和 '-' 替換為 '_'
 	replacer := strings.NewReplacer(".", "_")
 	viper.SetEnvKeyReplacer(replacer)
 

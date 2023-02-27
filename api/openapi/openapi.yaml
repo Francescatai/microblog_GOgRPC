@@ -1,7 +1,7 @@
-# Copyright 2022 Innkeeper test(孔令飞) <test@gmail.com>. All rights reserved.
+# Copyright 2023 Francesca <https://github.com/Francescatai>. All rights reserved.
 # Use of this source code is governed by a MIT style
 # license that can be found in the LICENSE file. The original repo for
-# this file is https://github.com/marmotedu/miniblog.
+# this file is https://github.com/Francescatai/microblog_GOgRPC.
 
 swagger: "2.0"
 servers:

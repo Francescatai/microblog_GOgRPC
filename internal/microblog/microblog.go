@@ -1,11 +1,8 @@
-// Copyright 2023 Innkeeper Francesca <https://github.com/Francescatai>. All rights reserved.
+// Copyright 2023 Francesca <https://github.com/Francescatai>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file. The original repo for
 // this file is https://github.com/Francescatai/microblog_GOgRPC.
 
-/*
-cobra setting
-*/
 package microblog
 
 import (
@@ -16,6 +13,7 @@ import (
 	"github.com/spf13/viper"
 
 	"microblog/internal/pkg/log"
+	"microblog/pkg/version/verflag"
 )
 
 var cfgFile string
@@ -39,6 +37,9 @@ func NewMicroBlogCommand() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			log.Init(logOptions())
  			defer log.Sync() // Sync 將緩存中的log存到文件中
+
+			// if `--version=true`，print version info and exit
+			verflag.PrintAndExitIfRequested()
 
 			return run()
 		},
@@ -64,6 +65,9 @@ func NewMicroBlogCommand() *cobra.Command {
 
 	// Cobra 也支持本地flag，本地flag只能在其所绑定的命令上使用
 	cmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	// add --version flag
+	verflag.AddFlags(cmd.PersistentFlags())
 
 	return cmd
 }
