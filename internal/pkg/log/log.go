@@ -8,9 +8,12 @@ package log
 import (
 	"sync"
 	"time"
+	"context"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
+
+	"microblog/internal/pkg/known"
 )
 
 // project的log interface. 只包含了支持的log method
@@ -163,4 +166,27 @@ func Fatalw(msg string, keysAndValues ...interface{}) {
 
 func (l *zapLogger) Fatalw(msg string, keysAndValues ...interface{}) {
 	l.z.Sugar().Fatalw(msg, keysAndValues...)
+}
+
+
+/* write requestID to log */
+// C 解析傳入的 context，取出key-value，並新增到 zap.Logger log中
+func C(ctx context.Context) *zapLogger {
+	return std.C(ctx)
+}
+
+func (l *zapLogger) C(ctx context.Context) *zapLogger {
+	lc := l.clone() 
+
+	if requestID := ctx.Value(known.XRequestIDKey); requestID != nil {
+		lc.z = lc.z.With(zap.Any(known.XRequestIDKey, requestID))
+	}
+
+	return lc
+}
+
+// clone deep copy zapLogger
+func (l *zapLogger) clone() *zapLogger {
+	lc := *l
+	return &lc
 }

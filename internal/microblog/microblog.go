@@ -8,12 +8,21 @@ package microblog
 import (
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"errors"
+	"context"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"github.com/gin-gonic/gin"
 
 	"microblog/internal/pkg/log"
 	"microblog/pkg/version/verflag"
+	mwRequestId "microblog/internal/pkg/middleware"
 )
 
 var cfgFile string
@@ -36,7 +45,7 @@ func NewMicroBlogCommand() *cobra.Command {
 		// 指定調用 cmd.Execute() 時，執行Run function，執行失敗會返回錯誤資訊
 		RunE: func(cmd *cobra.Command, args []string) error {
 			log.Init(logOptions())
- 			defer log.Sync() // Sync 將緩存中的log存到文件中
+ 			defer log.Sync() // 將緩存中的log存到文件中
 
 			// if `--version=true`，print version info and exit
 			verflag.PrintAndExitIfRequested()
@@ -77,6 +86,59 @@ func run() error {
 	fmt.Println("start CLI service")
 	settings, _ := json.Marshal(viper.AllSettings())
 	log.Infow(string(settings))
+
+	// Gin mode
+	gin.SetMode(viper.GetString("runmode"))
+
+
+	g := gin.New()
+
+	mws := []gin.HandlerFunc{gin.Recovery(), mwRequestId.NoCache, mwRequestId.Cors, mwRequestId.Secure, mwRequestId.RequestID()}
+
+	g.Use(mws...)
+
+	// 404 Handler
+	g.NoRoute(func(c *gin.Context) {
+		c.JSON(http.StatusNotFound, gin.H{"code": 404, "message": "Page not found."})
+	})
+
+	// healthz handler
+	g.GET("/healthz", func(c *gin.Context) {
+		log.C(c).Infow("Healthz function called")
+		
+		c.JSON(http.StatusOK, gin.H{"status": "ok"})
+	})
+
+	// HTTP Server instantiation
+	httpsrv := &http.Server{Addr: viper.GetString("addr"), Handler: g}
+
+	log.Infow("Start to listening the incoming requests on http address", "addr", viper.GetString("addr"))
+	go func() {
+        if err := httpsrv.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+            log.Fatalw(err.Error())
+        }
+    }()
+
+	// 等待中斷signal關閉server（10 秒超時)
+    quit := make(chan os.Signal, 1)
+    // kill (no param) default send syscall.SIGTERM
+    // kill -2 is syscall.SIGINT -> Ctrl +C
+    // kill -9 is syscall.SIGKILL but can't be caught, so don't need to add it
+    signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM) 
+    <-quit                                               // 接收到以上兩種singal才會繼續執行
+    log.Infow("Shutting down server ...")
+
+    // 新增 ctx 用於通知server goroutine, 有 10 秒時間完成當前正在處理的請求
+    ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+    defer cancel()
+
+    // 10 秒内將未完成的請求處理完再關閉server，超時直接退出
+    if err := httpsrv.Shutdown(ctx); err != nil {
+        log.Errorw("Insecure Server forced to shutdown", "err", err)
+        return err
+    }
+
+    log.Infow("Server exiting")
 
 	return nil
 }

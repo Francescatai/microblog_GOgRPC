@@ -35,7 +35,7 @@ func initConfig() {
 		// 如果取得用戶主目錄失敗，印 `'Error: xxx` 錯誤並退出
 		cobra.CheckErr(err)
 
-		// 將用 `$HOME/<recommendedHomeDir>` 目錄加入到配置文件的查找路徑
+		// 將 `$HOME/<recommendedHomeDir>` 目錄加入到配置文件的查找路徑
 		viper.AddConfigPath(filepath.Join(home, recommendedHomeDir))
 
 		// 把當前目錄加入到配置文件的查找路徑中
