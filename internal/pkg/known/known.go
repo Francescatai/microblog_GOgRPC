@@ -6,6 +6,9 @@
 package known
 
 const (
-	// 定義 Gin context中的key，代表請求的 uuid.
+	// 定義 Gin context中的key，代表請求的 uuid
 	XRequestIDKey = "X-Request-ID"
+
+	// 定義 Gin 上下文的key，代表請求的用戶
+	XUsernameKey = "X-Username"
 )

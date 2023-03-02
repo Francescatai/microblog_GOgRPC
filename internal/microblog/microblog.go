@@ -20,8 +20,10 @@ import (
 	"github.com/spf13/viper"
 	"github.com/gin-gonic/gin"
 
+	"microblog/internal/pkg/known"
 	"microblog/internal/pkg/log"
 	"microblog/pkg/version/verflag"
+	"microblog/pkg/token"
 	mwRequestId "microblog/internal/pkg/middleware"
 
 )
@@ -89,6 +91,8 @@ func run() error {
 	if err := initStore(); err != nil {
 		return err
 	}
+
+	token.Init(viper.GetString("jwt-secret"), known.XUsernameKey)
 
 	// Gin mode
 	gin.SetMode(viper.GetString("runmode"))

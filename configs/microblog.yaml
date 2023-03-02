@@ -5,7 +5,8 @@
 
 
 runmode: debug # debug, release, test
-addr: :8080                  
+addr: :8080
+jwt-secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5                  
 
 db:
   host: 127.0.0.1

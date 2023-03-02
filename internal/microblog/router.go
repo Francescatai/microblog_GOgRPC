@@ -13,6 +13,7 @@ import (
 	"microblog/internal/pkg/core"
 	errno "microblog/internal/pkg/err"
 	"microblog/internal/pkg/log"
+	mw "microblog/internal/pkg/middleware"
 )
 
 
@@ -36,6 +37,8 @@ func installRouters(g *gin.Engine) error {
 		userv1 := v1.Group("/users")
 		{
 			userv1.POST("", uc.Create)
+			userv1.PUT(":name/change-password", uc.ChangePassword)
+			userv1.Use(mw.Authn())
 		}
 	}
 
