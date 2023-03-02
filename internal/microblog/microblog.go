@@ -23,24 +23,22 @@ import (
 	"microblog/internal/pkg/log"
 	"microblog/pkg/version/verflag"
 	mwRequestId "microblog/internal/pkg/middleware"
+
 )
 
 var cfgFile string
 
-// NewMicroBlogCommand 創建一個 *cobra.Command 對象之後，可以使用 Command 對象的 Execute 方法來啟動應用
+// 創建一個 *cobra.Command 對象之後，可以使用 Command 對象的 Execute 方法來啟動應用
 func NewMicroBlogCommand() *cobra.Command {
 	cmd := &cobra.Command{
-		// 名字會出現在幫助資訊中
 		Use: "microblog",
-		// 命令敘述
 		Short: "A Go practical project",
-		// 命令詳情
 		Long: `A Go practical project, used to create user with basic information.
 
 				Find more information at:
 				https://github.com/Francescatai/microblog_GOgRPC`,
 
-		// true-> 可以保持命令出錯時顯示錯誤資訊
+		// true -> 可以保持命令出錯時顯示錯誤資訊
 		SilenceUsage: true,
 		// 指定調用 cmd.Execute() 時，執行Run function，執行失敗會返回錯誤資訊
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -52,7 +50,7 @@ func NewMicroBlogCommand() *cobra.Command {
 
 			return run()
 		},
-		// 命令運行時，不需要指定命令行參數
+		// 不需要指定命令行參數
 		Args: func(cmd *cobra.Command, args []string) error {
 			for _, arg := range args {
 				if len(arg) > 0 {
@@ -64,7 +62,7 @@ func NewMicroBlogCommand() *cobra.Command {
 		},
 	}
 
-	// 以下設定，使得 initConfig 函數在每個命令行都會被調用讀取配置
+	// initConfig 函數在每個命令行都會被調用讀取配置
 	cobra.OnInitialize(initConfig)
 
 	// 定義flag與配置設定
@@ -87,6 +85,11 @@ func run() error {
 	settings, _ := json.Marshal(viper.AllSettings())
 	log.Infow(string(settings))
 
+	// 初始化 store 
+	if err := initStore(); err != nil {
+		return err
+	}
+
 	// Gin mode
 	gin.SetMode(viper.GetString("runmode"))
 
@@ -97,17 +100,9 @@ func run() error {
 
 	g.Use(mws...)
 
-	// 404 Handler
-	g.NoRoute(func(c *gin.Context) {
-		c.JSON(http.StatusNotFound, gin.H{"code": 404, "message": "Page not found."})
-	})
-
-	// healthz handler
-	g.GET("/healthz", func(c *gin.Context) {
-		log.C(c).Infow("Healthz function called")
-		
-		c.JSON(http.StatusOK, gin.H{"status": "ok"})
-	})
+	if err := installRouters(g); err != nil {
+		return err
+	}
 
 	// HTTP Server instantiation
 	httpsrv := &http.Server{Addr: viper.GetString("addr"), Handler: g}
@@ -124,8 +119,8 @@ func run() error {
     // kill (no param) default send syscall.SIGTERM
     // kill -2 is syscall.SIGINT -> Ctrl +C
     // kill -9 is syscall.SIGKILL but can't be caught, so don't need to add it
-    signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM) 
-    <-quit                                               // 接收到以上兩種singal才會繼續執行
+    signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM) // 接收到以上兩種singal才會繼續執行
+    <-quit                                               
     log.Infow("Shutting down server ...")
 
     // 新增 ctx 用於通知server goroutine, 有 10 秒時間完成當前正在處理的請求
