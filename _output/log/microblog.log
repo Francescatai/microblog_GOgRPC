@@ -70,3 +70,9 @@ microblog/internal/microblog.startSecureServer.func1
 2023-03-08 16:12:58.269	info	user/get.go:16	Get user function called	{"X-Request-ID": "e7667590-1e8d-4de0-a95b-9b2aa4e3ddb9", "X-Username": "root2"}
 2023-03-08 16:14:41.103	info	microblog/microblog.go:129	Shutting down server ...
 2023-03-08 16:14:41.111	info	microblog/microblog.go:147	Server exiting
+2023-03-08 16:20:35.679	info	microblog/microblog.go:92	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"grpc":{"addr":":9090"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 16:20:35.695	info	microblog/microblog.go:157	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-08 16:20:35.695	info	microblog/microblog.go:171	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 16:20:35.700	info	microblog/microblog.go:193	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
+2023-03-08 16:20:42.410	info	microblog/microblog.go:129	Shutting down server ...
+2023-03-08 16:20:42.410	info	microblog/microblog.go:147	Server exiting
