@@ -1,0 +1,72 @@
+2023-03-03 16:45:54.140	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug"}
+2023-03-03 16:47:11.835	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug"}
+2023-03-03 16:47:11.884	info	microblog/microblog.go:114	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-03 16:47:16.040	info	user/create.go:21	Create user function called	{"X-Request-ID": "bab5e98d-9354-4064-bff7-f2189dcd5f41"}
+2023-03-03 16:51:09.507	info	user/create.go:21	Create user function called	{"X-Request-ID": "e12884bd-3fdc-4026-8ad7-488ceb0702b5"}
+2023-03-03 16:53:46.096	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug"}
+2023-03-03 16:53:46.102	info	microblog/microblog.go:114	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-03 16:53:46.146	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug"}
+2023-03-03 16:53:46.150	info	microblog/microblog.go:114	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-03 16:53:46.152	fatal	microblog/microblog.go:117	listen tcp :8080: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+microblog/internal/microblog.run.func1
+	D:/golang/go_pratice/microblog/internal/microblog/microblog.go:117
+2023-03-03 16:54:06.398	info	user/login.go:18	Login function called	{"X-Request-ID": "38630e9f-2a7a-4634-8f7e-65279ff0d1a1"}
+2023-03-03 16:58:27.063	info	user/change_password.go:20	Change password function called	{"X-Request-ID": "3944bd8f-2c1b-465e-a9b5-a716ace23536"}
+2023-03-03 16:58:35.879	info	microblog/microblog.go:128	Shutting down server ...
+2023-03-03 16:58:35.881	info	microblog/microblog.go:140	Server exiting
+2023-03-07 16:58:21.310	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug"}
+2023-03-07 16:58:21.502	info	microblog/microblog.go:114	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-07 16:58:28.395	info	user/create.go:24	Create user function called	{"X-Request-ID": "fd4aab50-aee6-4843-a667-2a951f6eea6f"}
+2023-03-07 17:00:12.285	info	user/login.go:18	Login function called	{"X-Request-ID": "e9584e2c-b61e-48de-b17f-e3a9c13156cc"}
+2023-03-07 17:00:51.057	debug	middleware/authz.go:24	Build authorize context	{"sub": "belma", "obj": "/v1/users/belma", "act": "GET"}
+2023-03-07 17:00:51.058	info	user/get.go:12	Get user function called	{"X-Request-ID": "04344e48-c73d-4bd7-a3c0-2cca0fe51e2f", "X-Username": "belma"}
+2023-03-07 19:14:29.111	info	microblog/microblog.go:128	Shutting down server ...
+2023-03-07 19:14:29.117	info	microblog/microblog.go:140	Server exiting
+2023-03-08 11:49:54.516	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 11:50:41.268	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 11:50:41.364	info	microblog/microblog.go:150	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-08 11:50:41.364	info	microblog/microblog.go:164	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 11:50:41.368	fatal	microblog/microblog.go:169	open ./_output/cert/server.crt: The system cannot find the path specified.
+microblog/internal/microblog.startSecureServer.func1
+	D:/golang/go_pratice/microblog/internal/microblog/microblog.go:169
+2023-03-08 11:51:52.378	info	microblog/microblog.go:88	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 11:51:52.391	info	microblog/microblog.go:150	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-08 11:51:52.391	info	microblog/microblog.go:164	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 11:51:52.395	fatal	microblog/microblog.go:169	open ./_output/cert/server.crt: The system cannot find the path specified.
+microblog/internal/microblog.startSecureServer.func1
+	D:/golang/go_pratice/microblog/internal/microblog/microblog.go:169
+2023-03-08 15:34:35.747	info	microblog/microblog.go:93	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"grpc":{"addr":":9090"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 15:34:35.882	info	microblog/microblog.go:159	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-08 15:34:35.882	info	microblog/microblog.go:173	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 15:34:35.883	info	microblog/microblog.go:195	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
+2023-03-08 15:34:35.917	fatal	microblog/microblog.go:178	open ./_output/cert/server.crt: The system cannot find the path specified.
+microblog/internal/microblog.startSecureServer.func1
+	D:/golang/go_pratice/microblog/internal/microblog/microblog.go:178
+2023-03-08 15:48:08.177	info	microblog/microblog.go:93	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"grpc":{"addr":":9090"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 15:48:08.255	info	microblog/microblog.go:159	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-08 15:48:08.256	info	microblog/microblog.go:173	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 15:48:08.258	info	microblog/microblog.go:195	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
+2023-03-08 15:48:08.258	fatal	microblog/microblog.go:178	open ./_output/cert/server.crt: The system cannot find the path specified.
+microblog/internal/microblog.startSecureServer.func1
+	D:/golang/go_pratice/microblog/internal/microblog/microblog.go:178
+2023-03-08 15:52:20.838	info	microblog/microblog.go:92	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"grpc":{"addr":":9090"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 15:52:20.856	info	microblog/microblog.go:157	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-08 15:52:20.856	info	microblog/microblog.go:171	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 15:52:20.857	info	microblog/microblog.go:193	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
+2023-03-08 15:52:20.858	fatal	microblog/microblog.go:176	open ./_output/cert/server.crt: The system cannot find the path specified.
+microblog/internal/microblog.startSecureServer.func1
+	D:/golang/go_pratice/microblog/internal/microblog/microblog.go:176
+2023-03-08 15:59:30.862	info	microblog/microblog.go:92	{"addr":":8080","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"grpc":{"addr":":9090"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 15:59:30.890	info	microblog/microblog.go:157	Start to listening the incoming requests on http address	{"addr": ":8080"}
+2023-03-08 15:59:30.890	info	microblog/microblog.go:171	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 15:59:30.891	info	microblog/microblog.go:193	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
+2023-03-08 15:59:55.638	info	microblog/router.go:28	Healthz function called	{"X-Request-ID": "7f8edb11-c506-44bf-b71d-e7fc68040766"}
+2023-03-08 16:06:30.880	info	microblog/router.go:28	Healthz function called	{"X-Request-ID": "209dbf17-4518-4790-b038-a6897ecbd156"}
+2023-03-08 16:09:23.647	debug	middleware/authz.go:28	Build authorize context	{"sub": "belma", "obj": "/v1/users", "act": "GET"}
+2023-03-08 16:09:35.269	info	user/create.go:23	Create user function called	{"X-Request-ID": "dcf1bfbc-7a8f-441e-874f-fb64d0bebfc5"}
+2023-03-08 16:10:30.836	debug	middleware/authz.go:28	Build authorize context	{"sub": "belma", "obj": "/v1/users/root2", "act": "GET"}
+2023-03-08 16:12:12.159	info	user/login.go:18	Login function called	{"X-Request-ID": "ac8cffe9-0605-4a6b-a76a-37965d400d44"}
+2023-03-08 16:12:58.263	debug	middleware/authz.go:28	Build authorize context	{"sub": "root2", "obj": "/v1/users/root2", "act": "GET"}
+2023-03-08 16:12:58.269	info	user/get.go:16	Get user function called	{"X-Request-ID": "e7667590-1e8d-4de0-a95b-9b2aa4e3ddb9", "X-Username": "root2"}
+2023-03-08 16:14:41.103	info	microblog/microblog.go:129	Shutting down server ...
+2023-03-08 16:14:41.111	info	microblog/microblog.go:147	Server exiting

@@ -6,13 +6,14 @@
 package biz
 
 import (
+	"microblog/internal/microblog/biz/post"
 	"microblog/internal/microblog/biz/user"
 	"microblog/internal/microblog/store"
 )
 
-
 type IBiz interface {
 	Users() user.UserBiz
+	Posts() post.PostBiz
 }
 
 var _ IBiz = (*biz)(nil)
@@ -29,4 +30,8 @@ func NewBiz(ds store.IStore) *biz {
 
 func (b *biz) Users() user.UserBiz {
 	return user.New(b.ds)
+}
+
+func (b *biz) Posts() post.PostBiz {
+	return post.New(b.ds)
 }

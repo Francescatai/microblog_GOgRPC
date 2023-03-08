@@ -8,7 +8,6 @@ package verflag
 // Package verflag defines utility functions to handle command line flags
 // related to version of IAM.
 
-
 import (
 	"fmt"
 	"os"
@@ -81,7 +80,7 @@ func VersionVar(p *versionValue, name string, value versionValue, usage string) 
 	pflag.Lookup(name).NoOptDefVal = "true"
 }
 
-// VersionVar function's encapsulation 
+// VersionVar function's encapsulation
 func Version(name string, value versionValue, usage string) *versionValue {
 	p := new(versionValue)
 	VersionVar(p, name, value, usage)
@@ -89,7 +88,7 @@ func Version(name string, value versionValue, usage string) *versionValue {
 	return p
 }
 
-// Registers this package's flags on an arbitrary FlagSet 
+// Registers this package's flags on an arbitrary FlagSet
 // such that they point to the same values ​​as the global flags
 func AddFlags(fs *pflag.FlagSet) {
 	fs.AddFlag(pflag.Lookup(versionFlagName))

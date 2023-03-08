@@ -15,6 +15,8 @@ import (
 	v1 "microblog/pkg/api/microblog/v1"
 )
 
+const defaultMethods = "(GET)|(POST)|(PUT)|(DELETE)"
+
 var r v1.CreateUserRequest
 
 func (userContr *UserController) Create(c *gin.Context) {
@@ -33,6 +35,12 @@ func (userContr *UserController) Create(c *gin.Context) {
 	}
 
 	if err := userContr.b.Users().Create(c, &r); err != nil {
+		core.WriteResponse(c, err, nil)
+
+		return
+	}
+
+	if _, err := userContr.a.AddNamedPolicy("p", r.Username, "/v1/users/"+r.Username, defaultMethods); err != nil {
 		core.WriteResponse(c, err, nil)
 
 		return

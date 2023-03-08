@@ -5,7 +5,6 @@
 
 package v1
 
-
 type LoginRequest struct {
 	Username string `json:"username" valid:"alphanum,required,stringlength(1|255)"`
 	Password string `json:"password" valid:"required,stringlength(6|18)"`
@@ -26,4 +25,35 @@ type CreateUserRequest struct {
 	Nickname string `json:"nickname" valid:"required,stringlength(1|255)"`
 	Email    string `json:"email" valid:"required,email"`
 	Phone    string `json:"phone" valid:"required,stringlength(10|10)"`
+}
+
+type GetUserResponse UserInfo
+
+type UserInfo struct {
+	Username  string `json:"username"`
+	Nickname  string `json:"nickname"`
+	Email     string `json:"email"`
+	Phone     string `json:"phone"`
+	PostCount int64  `json:"postCount"`
+	CreatedAt string `json:"createdAt"`
+	UpdatedAt string `json:"updatedAt"`
+}
+
+//  `GET /v1/users`
+type ListUserRequest struct {
+	Offset int `form:"offset"`
+	Limit  int `form:"limit"`
+}
+
+//  `GET /v1/users`
+type ListUserResponse struct {
+	TotalCount int64       `json:"totalCount"`
+	Users      []*UserInfo `json:"users"`
+}
+
+// `PUT /v1/users/{name}`
+type UpdateUserRequest struct {
+	Nickname *string `json:"nickname" valid:"stringlength(1|255)"`
+	Email    *string `json:"email" valid:"email"`
+	Phone    *string `json:"phone" valid:"stringlength(11|11)"`
 }

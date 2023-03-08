@@ -13,26 +13,23 @@ import (
 
 var (
 	once sync.Once
-	
+
 	S *datastore
 )
 
-
 type IStore interface {
+	DB() *gorm.DB
 	Users() UserStore
+	Posts() PostStore
 }
-
 
 type datastore struct {
 	db *gorm.DB
 }
 
-
 var _ IStore = (*datastore)(nil)
 
-
 func NewStore(db *gorm.DB) *datastore {
-	// 確保 S 只被初始化一次
 	once.Do(func() {
 		S = &datastore{db}
 	})
@@ -40,7 +37,14 @@ func NewStore(db *gorm.DB) *datastore {
 	return S
 }
 
+func (ds *datastore) DB() *gorm.DB {
+	return ds.db
+}
 
 func (ds *datastore) Users() UserStore {
 	return newUsers(ds.db)
+}
+
+func (ds *datastore) Posts() PostStore {
+	return newPosts(ds.db)
 }

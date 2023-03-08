@@ -7,24 +7,20 @@ package err
 
 import "fmt"
 
-
 type Errno struct {
 	HTTP    int
 	Code    string
 	Message string
 }
 
-
 func (err *Errno) Error() string {
 	return err.Message
 }
-
 
 func (err *Errno) SetMessage(format string, args ...interface{}) *Errno {
 	err.Message = fmt.Sprintf(format, args...)
 	return err
 }
-
 
 func Decode(err error) (int, string, string) {
 	if err == nil {

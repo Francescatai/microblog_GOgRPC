@@ -13,7 +13,6 @@ import (
 	"microblog/pkg/auth"
 )
 
-
 type UserModel struct {
 	ID        int64     `gorm:"column:id;primary_key"`
 	Username  string    `gorm:"column:username;not null"`
@@ -30,11 +29,11 @@ func (u *UserModel) TableName() string {
 }
 
 func (u *UserModel) BeforeCreate(tx *gorm.DB) (err error) {
-    // Encrypt the user password
-    u.Password, err = auth.Encrypt(u.Password)
-    if err != nil {
-        return err
-    }
+	// Encrypt the user password
+	u.Password, err = auth.Encrypt(u.Password)
+	if err != nil {
+		return err
+	}
 
-    return nil
+	return nil
 }

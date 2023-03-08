@@ -5,9 +5,13 @@
 
 package model
 
+import (
+	"time"
 
-import "time"
+	"gorm.io/gorm"
 
+	"microblog/pkg/util/id"
+)
 
 type PostModel struct {
 	ID        int64     `gorm:"column:id;primary_key"`
@@ -19,7 +23,13 @@ type PostModel struct {
 	UpdatedAt time.Time `gorm:"column:updatedAt"`
 }
 
-
 func (p *PostModel) TableName() string {
 	return "post"
+}
+
+// BeforeCreate 在创建数据库记录之前生成 postID.
+func (p *PostModel) BeforeCreate(tx *gorm.DB) error {
+	p.PostID = "post-" + id.GenShortID()
+
+	return nil
 }

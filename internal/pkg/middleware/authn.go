@@ -15,7 +15,7 @@ import (
 )
 
 // 從 gin.Context 中提取 token 並驗證 token 是否合法，
-// 如果合法則將 token 中的 sub 作為<用户名>存放在 gin.Context 的 XUsernameKey 
+// 如果合法則將 token 中的 sub 作為<用户名>存放在 gin.Context 的 XUsernameKey
 func Authn() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// 解析 JWT Token

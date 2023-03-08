@@ -15,12 +15,10 @@ import (
 	jwt "github.com/golang-jwt/jwt/v4"
 )
 
-
 type Config struct {
 	key         string
 	identityKey string
 }
-
 
 var ErrMissingHeader = errors.New("the length of the `Authorization` header is zero")
 
@@ -39,7 +37,6 @@ func Init(key string, identityKey string) {
 		}
 	})
 }
-
 
 func Parse(tokenString string, key string) (string, error) {
 	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
@@ -76,7 +73,6 @@ func ParseRequest(c *gin.Context) (string, error) {
 
 	return Parse(t, config.key)
 }
-
 
 func Sign(identityKey string) (tokenString string, err error) {
 

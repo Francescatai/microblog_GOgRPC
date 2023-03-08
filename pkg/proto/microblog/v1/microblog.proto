@@ -1,0 +1,56 @@
+// Copyright 2023 Francesca <https://github.com/Francescatai>. All rights reserved.
+// Use of this source code is governed by a MIT style
+// license that can be found in the LICENSE file. The original repo for
+// this file is https://github.com/Francescatai/microblog_GOgRPC.
+
+syntax = "proto3"; 
+
+package v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "microblog/pkg/proto/microblog/v1";
+
+// 定義 microblog RPC 
+service Microblog {
+  rpc ListUser(ListUserRequest) returns (ListUserResponse) {}
+}
+
+message UserInfo {
+  string username = 1;
+  string nickname = 2;
+  string email = 3;
+  string phone = 4;
+  int64 postCount = 5;
+  google.protobuf.Timestamp createdAt = 6;
+  google.protobuf.Timestamp updatedAt = 7;
+}
+
+// ListUserRequest 指定了 `ListUser` 接口的請求參數，相當於 HTTP Request 並對每個屬性都定義數據類型
+// 需要為每個屬性分配一個唯一編號，稱為標記。此標記由 protobuf 用於表示屬性，而不是使用屬性名稱
+// 因此，在 JSON 中我们每次都需要傳屬性名稱 name，而 protobuf 將使用数字 1 来表示 name
+message ListUserRequest {
+  int64 limit = 1;
+  int64 offset = 2;
+}
+
+
+// ListUserResponse 指定了 `GET /v1/users` 接口的返回參數，相當於 HTTP Response.
+message ListUserResponse {
+  int64 totalCount = 1;
+  repeated UserInfo Users = 2;
+}
+
+// 示例 message 定義，用来展示 protobuf 修飾符，編譯後的效果
+message ModifierExample {
+  reserved 2, 15 to 25; // 保留標示符(reserved)可以避免其他人在未来使用不該使用的標誌號
+  string username = 1;
+  optional string nickname = 3; // 可選值
+  bool hasEmail = 4;
+  repeated string phones = 5; // 任意數量（包括0），可以看成是一個數組
+  bytes content = 6;
+  int32 money  = 7;
+  int64 count = 8;
+  map<string, int64> address = 9; // 編譯後：`Address   map[string]string`
+  google.protobuf.Timestamp createdAt = 10; 
+}

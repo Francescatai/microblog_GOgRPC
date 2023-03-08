@@ -15,7 +15,6 @@ import (
 	v1 "microblog/pkg/api/microblog/v1"
 )
 
-
 func (userContr *UserController) ChangePassword(c *gin.Context) {
 	log.C(c).Infow("Change password function called")
 
@@ -40,4 +39,3 @@ func (userContr *UserController) ChangePassword(c *gin.Context) {
 
 	core.WriteResponse(c, nil, nil)
 }
-

@@ -14,7 +14,6 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-
 type MySQLOptions struct {
 	Host                  string
 	Username              string
@@ -26,7 +25,6 @@ type MySQLOptions struct {
 	LogLevel              int
 }
 
-
 func (o *MySQLOptions) DSN() string {
 	return fmt.Sprintf(`%s:%s@tcp(%s)/%s?charset=utf8&parseTime=%t&loc=%s`,
 		o.Username,
@@ -36,7 +34,6 @@ func (o *MySQLOptions) DSN() string {
 		true,
 		"Local")
 }
-
 
 func NewMySQL(opts *MySQLOptions) (*gorm.DB, error) {
 	logLevel := logger.Silent
@@ -54,7 +51,6 @@ func NewMySQL(opts *MySQLOptions) (*gorm.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-
 
 	sqlDB.SetMaxOpenConns(opts.MaxOpenConnections)
 

@@ -8,14 +8,17 @@ package user
 import (
 	"microblog/internal/microblog/biz"
 	"microblog/internal/microblog/store"
+	"microblog/pkg/auth"
+	pb "microblog/pkg/proto/microblog/v1"
 )
 
-
 type UserController struct {
-    b biz.IBiz
+	a *auth.Authz
+	b biz.IBiz
+	pb.UnimplementedMicroblogServer
 }
 
-// New 创建一个 user controller.
-func New(ds store.IStore) *UserController {
-    return &UserController{b: biz.NewBiz(ds)}
+// New 創建一個 user controller
+func New(ds store.IStore, a *auth.Authz) *UserController {
+	return &UserController{a: a, b: biz.NewBiz(ds)}
 }

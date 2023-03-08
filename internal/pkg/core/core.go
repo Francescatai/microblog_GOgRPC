@@ -13,15 +13,11 @@ import (
 	errno "microblog/internal/pkg/err"
 )
 
-
 type ErrResponse struct {
-	
 	Code string `json:"code"`
-
 
 	Message string `json:"message"`
 }
-
 
 func WriteResponse(c *gin.Context, err error, data interface{}) {
 	if err != nil {

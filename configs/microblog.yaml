@@ -6,7 +6,15 @@
 
 runmode: debug # debug, release, test
 addr: :8080
-jwt-secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5                  
+jwt-secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
+
+tls:
+  addr: :8443 
+  cert: ./_output/cert/server.crt 
+  key: ./_output/cert/server.key 
+
+grpc:
+  addr: :9090 
 
 db:
   host: 127.0.0.1

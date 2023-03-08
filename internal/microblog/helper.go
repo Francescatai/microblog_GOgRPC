@@ -13,8 +13,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"microblog/internal/pkg/log"
 	"microblog/internal/microblog/store"
+	"microblog/internal/pkg/log"
 	"microblog/pkg/db"
 )
 
