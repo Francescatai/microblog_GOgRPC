@@ -16,20 +16,20 @@
 ![](https://i.imgur.com/rdgldEB.png)
 
 - User Management
-用戶註冊
-用戶登入
-取得用戶列表
-取得用戶詳細資訊
-更新用戶資訊
-修改用戶密碼
-刪除用戶
+-- 用戶註冊
+-- 用戶登入
+-- 取得用戶列表
+-- 取得用戶詳細資訊
+-- 更新用戶資訊
+-- 修改用戶密碼
+-- 刪除用戶
 - Blog Management
-新增blog
-取得blog列表
-取得blog詳細資訊
-更新blog內容
-刪除blog
-批量刪除blog
+-- 新增blog
+-- 取得blog列表
+-- 取得blog詳細資訊
+-- 更新blog內容
+-- 刪除blog
+-- 批量刪除blog
 
 
 ## Go Packages Intro
