@@ -76,3 +76,18 @@ microblog/internal/microblog.startSecureServer.func1
 2023-03-08 16:20:35.700	info	microblog/microblog.go:193	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
 2023-03-08 16:20:42.410	info	microblog/microblog.go:129	Shutting down server ...
 2023-03-08 16:20:42.410	info	microblog/microblog.go:147	Server exiting
+2023-03-08 16:50:31.974	info	microblog/microblog.go:92	{"addr":":8081","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"grpc":{"addr":":9090"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-08 16:50:32.023	info	microblog/microblog.go:157	Start to listening the incoming requests on http address	{"addr": ":8081"}
+2023-03-08 16:50:32.023	info	microblog/microblog.go:171	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-08 16:50:32.026	info	microblog/microblog.go:193	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
+2023-03-08 16:50:45.114	info	user/login.go:18	Login function called	{"X-Request-ID": "c7323f8f-6822-48f4-a292-d7386d038c5a"}
+2023-03-08 16:51:32.168	debug	middleware/authz.go:28	Build authorize context	{"sub": "root2", "obj": "/v1/users/root2", "act": "GET"}
+2023-03-08 16:51:32.171	info	user/get.go:16	Get user function called	{"X-Request-ID": "a0a63b55-6ee9-4f7b-b110-02014d98cb96", "X-Username": "root2"}
+2023-03-08 16:53:06.280	info	microblog/microblog.go:129	Shutting down server ...
+2023-03-08 16:53:06.287	info	microblog/microblog.go:147	Server exiting
+2023-03-09 21:26:10.428	info	microblog/microblog.go:92	{"addr":":8081","db":{"database":"microblog","host":"127.0.0.1","log-level":4,"max-connection-life-time":"10s","max-idle-connections":100,"max-open-connections":100,"password":"root","username":"root"},"grpc":{"addr":":9090"},"jwt-secret":"Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5","log":{"disable-caller":false,"disable-stacktrace":false,"format":"console","level":"debug","output-paths":["_output/log/microblog.log","stdout"]},"runmode":"debug","tls":{"addr":":8443","cert":"./_output/cert/server.crt","key":"./_output/cert/server.key"}}
+2023-03-09 21:26:10.533	info	microblog/microblog.go:157	Start to listening the incoming requests on http address	{"addr": ":8081"}
+2023-03-09 21:26:10.533	info	microblog/microblog.go:171	Start to listening the incoming requests on https address	{"addr": ":8443"}
+2023-03-09 21:26:10.535	info	microblog/microblog.go:193	Start to listening the incoming requests on grpc address	{"addr": ":9090"}
+2023-03-09 21:29:05.762	info	microblog/microblog.go:129	Shutting down server ...
+2023-03-09 21:29:05.762	info	microblog/microblog.go:147	Server exiting

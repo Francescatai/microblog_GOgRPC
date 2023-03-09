@@ -5,7 +5,7 @@
 
 
 runmode: debug # debug, release, test
-addr: :8080
+addr: :8081
 jwt-secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
 
 tls:
