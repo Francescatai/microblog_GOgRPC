@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: microblog_GOgRPC
+  annotations:
+    github.com/project-slug: Francescatai/microblog_GOgRPC
+spec:
+  type: other
+  lifecycle: unknown
+  owner: guests
